@@ -5,7 +5,8 @@ from time import time
 from urllib.parse import quote_plus, urlencode
 from hmac import HMAC
 import paho.mqtt.client as mqtt
-conn_str = os.getenv("conn_str")
+conn_str = "HostName=ksaye.azure-devices.net;DeviceId=paho;SharedAccessKey=6YerjQRP6K3GHsqdkdYeegepIPw8NU3odsy+UUqjAqY="
+#conn_str = os.getenv("conn_str")
 osname = ""
 rid = 0
 
@@ -32,22 +33,24 @@ def generate_sas_token(uri, key, expiry=3600):
 
 def message_handler(client, userdata, msg):
     global rid
-    print(msg.topic+" "+str(msg.payload))
+    msgpayload = msg.payload.decode("utf-8")
     if "$iothub/methods/POST/" in msg.topic:
         # responding to a direct method
-        print("Received Direct Method: " + str(msg.topic).split("/")[3] + " with payload: " + str(msg.payload))
-        rid = int(msg.topic).split("=")[1]
+        print("Received Direct Method: " + str(msg.topic).split("/")[3] + " with payload: " + str(msgpayload))
+        print()
+        rid = int(msg.topic.split("=")[1])
         # acknowledging the direct method
         payload = {"result": True, "data": "some data"} 
         status = 200
         client.publish("$iothub/methods/res/" + str(status) + "/?$rid=" + str(rid), str(payload))
     elif "$iothub/twin/res/" in msg.topic:
         # received a twin
-        print("Received twin status " + str(msg.topic).split("/")[3] +  " with payload: "+str(msg.payload))
-        rid = int(msg.topic).split("=")[1]
+        print("Received twin status " + str(msg.topic).split("/")[3] +  " with payload: "+str(msgpayload))
+        print()
+        int(msg.topic.split("=")[1].split("&")[0])
     elif "devices/" + deviceID + "/messages/devicebound/" in msg.topic:
         # we have a cloud to device message
-        print("Received C2D with payload: "+str(msg.payload))        
+        print("Received C2D with payload: "+str(msgpayload))        
 
 def on_connect(client, userdata, flags, rc):
     client.subscribe("devices/" + deviceID + "/messages/devicebound/#")     # C2D
@@ -63,7 +66,7 @@ password = generate_sas_token(hostname + "/devices/" + deviceID, deviceKey)
 client = mqtt.Client(client_id=deviceID)
 client.on_message = message_handler
 client.on_connect = on_connect
-client.username_pw_set(hostname + "/" + deviceID, password)
+client.username_pw_set(hostname + "/" + deviceID + "/api-version=2016-11-14", password)
 client.tls_set_context(context=None)
 client.connect(hostname, 8883)
 while not client.is_connected():
@@ -72,6 +75,7 @@ while not client.is_connected():
 # updating a twin property
 reported_properties = {"OS": osname, "CurrentUser": str(os.environ["LOGNAME"]), "IP": str(socket.gethostbyname(socket.gethostname()))}
 client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + str(rid), json.dumps(reported_properties))
+print("sent twin: " + str(reported_properties))
 
 # send a message with properties and encoding
 iotmessage = json.dumps({"Message": "Hello World"})
