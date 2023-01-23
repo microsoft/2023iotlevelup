@@ -1,24 +1,17 @@
 # IoT Edge & Defender for IoT Micro Agent Lab
 
-## Lab 1: Configure Defender for IoT in IoT Hub
+## Lab 1: Install IoT Edge & Deploy Module
 
+## Lab 2: Configure Defender for IoT in IoT Hub
 
-## Lab 2: Setup IoT Edge & Micro Agent in VM
+## Lab 3: Setup IoT Edge & Micro Agent in VM
 
-
-## Lab 3: Analytics
-
-1. Configure loganalytics setting with Defender for IoT
-    ```
-    az security workspace-setting create -n default --target-workspace /subscriptions/$subscriptionId/resourcegroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$loganalyticsws
-    
-    az security iot-solution show --solution-name $iotHubName --resource-group $resourceGroup
-
-    ```
+## Lab 4: Analytics
 
 ## Clean Up
+```
 az group delete --name $resourceGroup
-
+```
 
 
 
