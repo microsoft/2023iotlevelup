@@ -3,12 +3,13 @@
 ### Cloud Prerequisites
 #### Using Portal
 1. Open Azure Subscription here - [Azure](https://portal.azure.com)
-2. Create Resource Group
-3. Create IoT Hub S1 SKU
-4. Create IoT Edge device in IoT Hub 
-5. Create Log Analytics Workspace
-6. Create VM (to configure IoT Edge) Ubuntu 20.04 LTS DS2_V2
-7. Open SSH port or enable JIT
+2. Create Resource Group ![Resource Group](./images/Create%20resource%20group.jpg)
+3. Create IoT Hub S1 SKU and save iothubowner connection string![Create IoT Hub](./images/create%20iothub.jpg) ![Save iothubowner Connection String](./images/iothub%20shared%20access%20policy.jpg)
+4. Create IoT Edge device in IoT Hub and save primary connection string ![Create IoT Edge Device](./images/create%20edge%20device.jpg) ![Edge Device Connection String](./images/edge%20device%20connection%20string.jpg)
+5. Create Log Analytics Workspace ![Log Analytics](./images/log%20analytics.jpg)
+6. Create VM (to configure IoT Edge) Ubuntu 20.04 LTS DS2_V2 ![Ubuntu](./images/ubuntu.jpg)
+7. Enable JIT or Open SSH port to VM ![Enable Jit](./images/jitconfiguration.jpg)
+8. SSH into VM via Cloud Shell ![SSH to VM](./images/cloudshellSSHtoVM.jpg)
 
 #### Using CLI
 1. Open Cloud Shell here - [Azure CLI](https://shell.azure.com)
