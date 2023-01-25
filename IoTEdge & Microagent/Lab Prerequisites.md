@@ -1,7 +1,7 @@
-# Prerequisites
+# Prerequisites (Use either Portal or CLI)
 
 ### Cloud Prerequisites 
-#### Using Portal ([CLI](https://github.com/microsoft/2023iotlevelup/blob/main/IoTEdge%20%26%20Microagent/Lab%20Prerequisites.md#using-cli) will be quick)
+#### Option: Using Portal ([CLI](https://github.com/microsoft/2023iotlevelup/blob/main/IoTEdge%20%26%20Microagent/Lab%20Prerequisites.md#using-cli) will be quick)
 1. Open Azure Subscription here - [Azure](https://portal.azure.com)
 2. Create Resource Group ![Resource Group](./images/Create%20resource%20group.jpg)
 3. Create IoT Hub S1 SKU and save iothubowner connection string![Create IoT Hub](./images/create%20iothub.jpg) ![Save iothubowner Connection String](./images/iothub%20shared%20access%20policy.jpg)
@@ -11,7 +11,7 @@
 7. Enable JIT or Open SSH port to VM ![Enable Jit](./images/jitconfiguration.jpg)
 8. SSH into VM via Cloud Shell ![SSH to VM](./images/cloudshellSSHtoVM.jpg)
 
-#### Using CLI
+#### Option: Using CLI 
 1. Open Cloud Shell here - [Azure CLI](https://shell.azure.com)
     >First time you will required to create Storage account for CLI
 2. Install & Update IoT Extension using commands at CLI prompt
