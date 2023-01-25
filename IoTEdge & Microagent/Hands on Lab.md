@@ -4,44 +4,45 @@
 
 ### 1. SSH into VM and run following to install Moby (Docker), IoT Edge & Micro Agent
 
-```
-# Get Microsoft package list and add as source
 
+### Get Microsoft package list and add as source
+```
     wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     rm packages-microsoft-prod.deb
-
-# Update package list and install Moby
-
+```
+### Update package list and install Moby (Docker)
+```
     sudo apt-get update; \
     sudo apt-get install moby-engine
-
-    # Check docker is running
-
+```
+### Check if docker is running 
+```
     systemctl status docker
-
-# Update package list and install IoT Edge and
-micro agent
-
+```
+### Update package list and install IoT Edge and Defender micro agent
+```
     sudo apt-get update;
     sudo apt-get install aziot-edge defender-iot-micro-agent-edge
-
-# Configure IoT Edge runtime with Edge Device Connection String and apply configuration. Use connection string saved in Prerequisites Step 4
-
-    sudo iotedge config mp --connection-string "***************"
+```
+### Configure IoT Edge runtime with Edge Device Connection String and apply configuration. Use connection string saved in Prerequisites Step 4
+```
+    sudo iotedge config mp --connection-string $DEVICECONNECTIONSTRING
     sudo iotedge config apply
-
-# Check IoT Edge & Micro Agent status
-
-
+```
+### Check IoT Edge Service Logs
+```
     sudo iotedge system logs -- -f
-
-    iotedge list
+```
+### Check what edge modules are running, either of the commands
+```
+    sudo iotedge list
 
     sudo docker ps
-
+```
+### Check defender service logs
+```
     journalctl -u defender-iot-micro-agent –f
-
 ```
 
 ## 2. Deploy Simulated Temperature & Humidity Module on IoT Edge
@@ -100,7 +101,8 @@ micro agent
 
 3. Review your device alert by clicking your edge device
 
-4. Open "Logs" under Monitoring menu on the left blade and close "Getting Started" and Wizard dialog to get to Query form.  Select scope to 
+4. Open "Logs" under Monitoring menu on the left blade and close "Getting Started" and Wizard dialog to get to Query form.  Select scope to your workspace ![logs](./images/triggernetworkprocess.jpg)
+5. Explore event details by selecting event ![event](./images/networkactivity.jpg)
 
 
 
@@ -108,5 +110,5 @@ micro agent
 
 ```
 az group delete --name $resourceGroup
-rm myconfig.log  
+
 ```

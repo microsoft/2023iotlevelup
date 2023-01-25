@@ -55,8 +55,9 @@
 
     HUBCONNECTIONSTRING=$(az iot hub connection-string show -n $iotHubName --policy-name iothubowner --key-type primary --query "connectionString") 
 
-    echo "IoT Hub Connection String ="
+    echo "Save this IoT Hub Connection String to notepad ="
     echo $HUBCONNECTIONSTRING
+    
 
     ```
 6. Create IoT Edge device in IoT Hub and save device connection string in notepad 
@@ -65,8 +66,9 @@
 
     DEVICECONNECTIONSTRING=$(az iot hub device-identity connection-string show --device-id $edgedeviceName  --hub-name $iotHubName --key-type primary -o tsv)
 
-    echo "Device Connection String ="
+    echo "Save this Device Connection String to notepad ="
     echo $DEVICECONNECTIONSTRING
+    echo "export DEVICECONNECTIONSTRING="$DEVICECONNECTIONSTRING >> myconfig.log
 
     ```
 
@@ -120,5 +122,4 @@ source myconfig.log
 1. Install Azure Device Explorer [Azure Device Explorer](https://github.com/Azure/azure-iot-explorer/releases/tag/v0.15.4)
 2. Install Git [Git](https://git-scm.com/downloads)
 
-## Clean Up
-az group delete --name $resourceGroup
+
