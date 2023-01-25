@@ -2,9 +2,14 @@
 
 ## Lab 1: Install IoT Edge & Deploy Module on VM
 
-### 1. SSH into VM and run following to install Moby (Docker), IoT Edge & Micro Agent
+### 1. Open Cloud Shell and  SSH into VM to install Moby (Docker), IoT Edge & Micro Agent
+```
+ssh -i .ssh/id_rsa $USER@$publicIp
 
+# if cloud shell was timed out, restore parameters using following command and then retry
+source myconfig.log
 
+```
 ### Get Microsoft package list and add as source
 ```
     wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
