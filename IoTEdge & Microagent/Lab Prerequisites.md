@@ -1,7 +1,7 @@
 # Prerequisites (Use either Portal or CLI)
 
 ### Cloud Prerequisites 
-#### Option: Using Portal ([CLI]([/"Lab Prerequisites.md#using-cli"](https://github.com/microsoft/2023iotlevelup/blob/main/IoTEdge%20%26%20Microagent/Lab%20Prerequisites.md#option-using-cli)) will be quick)
+#### Option: Using Portal or click here for [CLI]([/"Lab Prerequisites.md#using-cli"](https://github.com/microsoft/2023iotlevelup/blob/main/IoTEdge%20%26%20Microagent/Lab%20Prerequisites.md#option-using-cli)) will be quick)
 1. Open Azure Subscription here - [Azure](https://portal.azure.com)
 2. Create Resource Group ![Resource Group](./images/Create%20resource%20group.jpg)
 3. Create IoT Hub S1 SKU and save iothubowner connection string![Create IoT Hub](./images/create%20iothub.jpg) ![Save iothubowner Connection String](./images/iothub%20shared%20access%20policy.jpg)
