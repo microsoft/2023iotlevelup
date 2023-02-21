@@ -5,8 +5,7 @@ from time import time
 from urllib.parse import quote_plus, urlencode
 from hmac import HMAC
 import paho.mqtt.client as mqtt
-conn_str = "HostName=ksaye.azure-devices.net;DeviceId=paho;SharedAccessKey=6YerjQRP6K3GHsqdkdYeegepIPw8NU3odsy+UUqjAqY="
-#conn_str = os.getenv("conn_str")
+conn_str = os.getenv("conn_str")
 osname = ""
 rid = 0
 
